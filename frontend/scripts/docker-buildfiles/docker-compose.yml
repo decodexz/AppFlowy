@@ -11,6 +11,8 @@ services:
     build:
       context: ../../..
       dockerfile: ./frontend/scripts/docker-buildfiles/Dockerfile
+      args:
+        DOCKER_BUILDKIT: 0
     image: appflowy/appflowy:latest
     stdin_open: true
     # tty: true
