@@ -6,6 +6,8 @@ FROM menci/archlinuxarm:base-devel as builder
 RUN chown root:root /usr/bin/sudo && chmod 4755 /usr/bin/sudo
 
 # Upgrade the system
+RUN sed -i 's/\/etc\/resolv.conf:/\/run\/resolvconf\/resolv.conf:/' /etc/pacman.d/mirrorlist
+RUN sed -i 's/\/etc\/hosts:/\/run\/resolvconf\/hosts:/' /etc/pacman.d/mirrorlist
 RUN pacman -Syyu --noconfirm
 
 # Set up makepkg user and workdir
@@ -70,6 +72,8 @@ RUN cd frontend && \
 FROM menci/archlinuxarm
 
 # Upgrade the system
+RUN sed -i 's/\/etc\/resolv.conf:/\/run\/resolvconf\/resolv.conf:/' /etc/pacman.d/mirrorlist
+RUN sed -i 's/\/etc\/hosts:/\/run\/resolvconf\/hosts:/' /etc/pacman.d/mirrorlist
 RUN pacman -Syyu --noconfirm
 
 # Install runtime dependencies
