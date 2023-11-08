@@ -2,7 +2,7 @@
 # BUILDER
 #================
 
-FROM archlinux/archlinux:base-devel as builder
+FROM menci/archlinuxarm:base-devel as builder
 RUN chown root:root /usr/bin/sudo && chmod 4755 /usr/bin/sudo
 
 # Upgrade the system
@@ -67,7 +67,7 @@ RUN cd frontend && \
 # APP
 #================
 
-FROM archlinux/archlinux
+FROM menci/archlinuxarm
 
 # Upgrade the system
 RUN pacman -Syyu --noconfirm
